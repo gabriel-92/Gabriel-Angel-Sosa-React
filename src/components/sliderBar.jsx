@@ -1,19 +1,30 @@
+//componentes necesarios
 import React, { useState } from "react";
-import motion from "framer-motion";
-import "./components/nav.css";
-import MenuIcon from "@mui/icons-material/Menu";
+import { motion } from "framer-motion";
+//estilos del componente
+import "./nav.css";
 
+//animación de circulo en expansion utilizando framer-motion
 const variants = {
-    open: {
-        opacity: 1,
-        x: 0,
-    },
-
+    open: (height = 1000) => ({
+        clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+        transition: {
+            type: "spring",
+            stiffness: 20,
+            restDelta: 2,
+        },
+    }),
     closed: {
-        opacity: 0,
-        x: "-100%",
+        clipPath: "circle(30px at 40px 40px)",
+        transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 40,
+        },
     },
 };
+
+//Renderización del componente usando las animaciones de la librería
 
 const SliderBar = () => {
     const [show, setShow] = useState(false);
@@ -44,8 +55,10 @@ const SliderBar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
             >
-                {show ? <closeIcon /> : <MenuIcon />}
-                <MenuIcon />
+                <motion.img
+                    animate={show ? "open" : "closed"}
+                    src="https://img.icons8.com/color/48/000000/menu.png"
+                />
             </motion.button>
         </>
     );
