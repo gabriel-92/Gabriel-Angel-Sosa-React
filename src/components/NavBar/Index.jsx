@@ -7,11 +7,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import Cart from "../CartWidget/Index";
 
-// event listener for document body
-// so that on clicking outside the SliderBar,
-// 'SliderBar' is set to false.
-//animación de circulo en expansion utilizando framer-motion
-
 const variants = {
     open: (height = 500) => ({
         clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
