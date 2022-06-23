@@ -4,6 +4,7 @@ import SliderBar from "./components/NavBar/Index";
 import "./App.css";
 import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
 
+
 //Renderizar componentes
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 Desafió Nº3 - React - Gabriel Sosa
             </motion.h1>
             <ItemListContainer className="ItemContainer" greeting={"Hola"} />
+
         </motion.div>
     );
 }
