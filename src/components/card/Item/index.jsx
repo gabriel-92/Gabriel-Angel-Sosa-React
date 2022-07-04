@@ -2,14 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./styles.css";
 
-const Item = ({ products }) => {
+const Item = ({ products, open }) => {
     return (
         <motion.div
-            className="CardContainer "
+            className="CardContainer  "
             whileHover={{
                 scale: 1.1,
                 cursor: "pointer",
             }}
+            onClick={open}
         >
             <motion.div className="Card">
                 <motion.h5 className="categoryName">Category :</motion.h5>
