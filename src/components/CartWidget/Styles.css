@@ -1,3 +1,10 @@
 .TextButtonCart {
-          margin-right: 15px;
+          margin-right: 10px;
+}
+
+
+.QuantityCart {
+          font-size: 10px;
+          color: white;
+          text-align: justify;
 }

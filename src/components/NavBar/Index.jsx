@@ -44,6 +44,7 @@ const SliderBar = () => {
                     variants={variants}
                     ref={containerRef}
                     custom={height}
+                    onClick={(e) => e.stopPropagation()}
                 >
                     <motion.div className="inner-nav">
                         <motion.ul>

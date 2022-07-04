@@ -23,7 +23,7 @@ inner-nav {
 }
 
 button.Cart {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 button.toggle {
@@ -72,3 +72,20 @@ nav .inner-nav li:hover {
             rgba(173, 208, 245, 1) 0%,
             rgba(16, 147, 254, 1) 90%);
 }
+
+.QuantityContainer {
+    position: absolute;
+    left: 112px;
+    top: -5px;
+    background-color: red;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* align-items: center;
+    text-align: center; */

@@ -13,6 +13,9 @@ const Cart = () => {
         >
             <motion.span className="TextButtonCart"> Shopping Cart</motion.span>
             <AiOutlineShoppingCart />
+            <motion.div className="QuantityContainer ">
+                <motion.span className="QuantityCart">2</motion.span>
+            </motion.div>
         </motion.button>
     );
 };

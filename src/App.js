@@ -5,9 +5,9 @@ import "./App.css";
 import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
 
 
-
 //Renderizar componentes
 function App() {
+
     return (
         <motion.div>
             <SliderBar />
@@ -17,8 +17,9 @@ function App() {
                 transition={{ duration: 1 }}
                 className="Title"
             >
-                Desafió Nº3 - React - Gabriel Sosa
+                Desafió Nº6 - React - Gabriel Sosa
             </motion.h1>
+
             <ItemListContainer className="ItemContainer" greeting={"Hola"} />
 
         </motion.div>

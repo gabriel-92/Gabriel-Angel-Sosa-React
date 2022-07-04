@@ -5,10 +5,13 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-image: radial-gradient(circle farthest-corner at 10% 20%,
             rgba(173, 208, 245, 1) 0%,
             rgba(16, 147, 254, 1) 90%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 h1.Title {

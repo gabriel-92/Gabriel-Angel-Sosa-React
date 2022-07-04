@@ -14,14 +14,13 @@ function ItemCount({ handleAdd, stock }) {
     return (
         <>
             <div className="ItemContainer">
+                <h1>{count}</h1>
                 <button onClick={aumentar}>Aumentar</button>
                 <button onClick={disminuir}>Disminuir</button>
-                <h1>{count}</h1>
-                <button count={count} onClick={handleAdd}>
-                    Agregar al carrito
-                </button>
+                <button onClick={handleAdd}>Agregar al carrito</button>
             </div>
         </>
     );
 }
+
 export default ItemCount;

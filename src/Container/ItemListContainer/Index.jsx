@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ItemCount from "../../components/ItemCount/index";
-import ItemList from "../../components/ItemList/Index";
+import ItemList from "../../components/card/ItemList/Index";
 
 import "./Styles.css";
 
