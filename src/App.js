@@ -1,10 +1,11 @@
 //importar componentes
 //import { motion } from "framer-motion";
 import SliderBar from "./components/NavBar/Index";
-import "./App.css";
-import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Modal from "./components/card/Modal/Index";
+import ItemDetailContainer from "./Container/ItemDetailContainer/Index.jsx";
+import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
+import "./App.css";
+
 import NotFound from "./components/NotFound/Index";
 
 
@@ -12,17 +13,17 @@ import NotFound from "./components/NotFound/Index";
 function App() {
 
     return (
-        <>
+
+        <BrowserRouter>
             <SliderBar />
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<ItemListContainer />} />
-                    <Route path="/category/:id" element={<ItemListContainer />} />
-                    <Route path="/detail/:productId" element={<Modal />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </BrowserRouter>
-        </>
+            <Routes>
+                <Route path="/" element={<ItemListContainer />} />
+                <Route path="/category/:categoryId" element={<ItemListContainer />} />
+                <Route path="/detail/:productId" element={<ItemDetailContainer />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
+
     );
 }
 

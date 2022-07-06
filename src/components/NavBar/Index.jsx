@@ -7,6 +7,7 @@ import "./Styles.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import Cart from "../CartWidget/Index";
+import { Link } from "react-router-dom";
 
 const variants = {
     open: (height = 1000) => ({
@@ -49,13 +50,14 @@ const SliderBar = () => {
                     <motion.div className="inner-nav">
                         <motion.ul>
                             <motion.li>
-                                <motion.a
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 1 }}
-                                    href="#"
-                                >
-                                    Home
-                                </motion.a>
+                                <Link to="/">
+                                    <motion.p
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 1 }}
+                                    >
+                                        Home
+                                    </motion.p>
+                                </Link>
                             </motion.li>
                             <motion.li>
                                 <motion.a
@@ -91,6 +93,54 @@ const SliderBar = () => {
             >
                 {show ? <CgClose /> : <AiOutlineMenu />}
             </motion.button>
+            <motion.div className="navCategory">
+                <motion.ul className="dropdown-content__ul">
+                    <motion.li className="category">
+                        <Link to="/category/women's clothing">
+                            <motion.p
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 1 }}
+                                href="#"
+                            >
+                                women's clothing
+                            </motion.p>
+                        </Link>
+                    </motion.li>
+                    <motion.li className="category">
+                        <Link to="/category/men's clothing">
+                            <motion.p
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 1 }}
+                                href="#"
+                            >
+                                men's clothing
+                            </motion.p>
+                        </Link>
+                    </motion.li>
+                    <motion.li className="category">
+                        <Link to="/category/jewelery">
+                            <motion.p
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 1 }}
+                                href="#"
+                            >
+                                jewelry
+                            </motion.p>
+                        </Link>
+                    </motion.li>
+                    <motion.li className="category">
+                        <Link to="/category/electronics">
+                            <motion.p
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 1 }}
+                                href="#"
+                            >
+                                electronics
+                            </motion.p>
+                        </Link>
+                    </motion.li>
+                </motion.ul>
+            </motion.div>
         </>
     );
 };

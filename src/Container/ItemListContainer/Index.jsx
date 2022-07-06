@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
-import ItemCount from "../../components/ItemCount/index";
-import ItemList from "../../components/card/ItemList/Index";
+import { useParams } from "react-router-dom";
 
+//import ItemCount from "../../components/ItemCount/index";
+import ItemList from "../../components/card/ItemList/Index";
 import "./Styles.css";
+import Loading from "../../components/Loading/Index";
 
 // función Principal con el export
 const ItemListContainer = ({ greeting }) => {
-    const [productos, setProductos] = useState(null);
+    const [productos, setProductos] = useState([]);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
+    const params = useParams();
+    // variantes para el componente ItemCount
+    // const stock = 10;
+    // const handleAdd = () => {
+    //     console.log("Se agregaron productos al carrito");
+    // };
 
     // Hooks react para llamar la función
     useEffect(() => {
@@ -17,8 +26,8 @@ const ItemListContainer = ({ greeting }) => {
                     "https://fakestoreapi.com/products"
                 );
                 const data = await response.json();
-                console.log(data);
                 setProductos(data);
+                setProductosFiltrados(data);
             } catch (error) {
                 console.log("Hubo un error:");
                 console.log(error);
@@ -27,17 +36,25 @@ const ItemListContainer = ({ greeting }) => {
         getProductos();
     }, []);
 
-    // variantes para el componente ItemCount
-    const stock = 10;
-    const handleAdd = () => {
-        console.log("Se agregaron productos al carrito");
-    };
+    useEffect(() => {
+        if (params?.categoryId) {
+            const productosFiltrados = productos.filter(
+                (producto) => producto.category === params.categoryId
+            );
+            setProductosFiltrados(productosFiltrados);
+        } else {
+            setProductosFiltrados(productos);
+        }
+    }, [params, productos]);
 
     return (
         <div>
-            <h1 className="ItemContainer">{greeting}</h1>
-            <ItemCount stock={stock} handleAdd={handleAdd} />
-            {productos ? <ItemList products={productos} /> : null}
+            {/* <ItemCount stock={stock} handleAdd={handleAdd} /> */}
+            {productos.length !== 0 ? (
+                <ItemList products={productosFiltrados} />
+            ) : (
+                <Loading />
+            )}
         </div>
     );
 };

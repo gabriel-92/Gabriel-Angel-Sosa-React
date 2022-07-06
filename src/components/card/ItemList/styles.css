@@ -6,8 +6,8 @@
   grid-row-gap: 29px;
   background-color: aliceblue;
   border-radius: 10px;
-  padding: 20px;
-  margin: 10% auto;
+  margin: 1px auto;
   width: 80%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  padding: 20px;
 }

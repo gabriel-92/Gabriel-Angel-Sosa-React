@@ -1,8 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import "./styles.css";
 
-const Item = ({ products, open }) => {
+const Item = ({ products }) => {
+    const navigate = useNavigate();
+
+    const handleDetail = () => {
+        navigate(`/detail/${products.id}`);
+    };
+
     return (
         <motion.div
             className="CardContainer  "
@@ -10,7 +18,7 @@ const Item = ({ products, open }) => {
                 scale: 1.1,
                 cursor: "pointer",
             }}
-            onClick={open}
+            onClick={handleDetail}
         >
             <motion.div className="Card">
                 <motion.h5 className="categoryName">Category :</motion.h5>
