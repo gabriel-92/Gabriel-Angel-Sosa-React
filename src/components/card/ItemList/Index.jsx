@@ -36,7 +36,7 @@ const ItemList = ({ products }) => {
                                     <Modal
                                         products={producto}
                                         close={closeModal}
-                                        key="Modal"
+                                        key={producto.id}
                                     />
                                 );
                             })}
