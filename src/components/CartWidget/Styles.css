@@ -1,7 +1,11 @@
 .TextButtonCart {
           margin-right: 10px;
+
 }
 
+.Cart {
+          cursor: pointer;
+}
 
 .QuantityCart {
           font-size: 10px;

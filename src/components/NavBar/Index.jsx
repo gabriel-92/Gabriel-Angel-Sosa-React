@@ -78,7 +78,9 @@ const SliderBar = () => {
                                 </motion.a>
                             </motion.li>
                             <motion.li>
-                                <Cart />
+                                <Link to="/cart">
+                                    <Cart />
+                                </Link>
                             </motion.li>
                         </motion.ul>
                     </motion.div>

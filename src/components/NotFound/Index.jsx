@@ -4,60 +4,60 @@ import "./styles.css";
 const NotFound = () => {
     return (
         <>
-            <div class="text">
+            <div className="text">
                 <p>404</p>
             </div>
-            <div class="container">
+            <div className="container">
                 {/* <!-- caveman left --> */}
-                <div class="caveman">
-                    <div class="leg">
-                        <div class="foot">
-                            <div class="fingers"></div>
+                <div className="caveman">
+                    <div className="leg">
+                        <div className="foot">
+                            <div className="fingers"></div>
                         </div>
                     </div>
-                    <div class="leg">
-                        <div class="foot">
-                            <div class="fingers"></div>
+                    <div className="leg">
+                        <div className="foot">
+                            <div className="fingers"></div>
                         </div>
                     </div>
-                    <div class="shape">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
+                    <div className="shape">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
                     </div>
-                    <div class="head">
-                        <div class="eye">
-                            <div class="nose"></div>
+                    <div className="head">
+                        <div className="eye">
+                            <div className="nose"></div>
                         </div>
-                        <div class="mouth"></div>
+                        <div className="mouth"></div>
                     </div>
-                    <div class="arm-right">
-                        <div class="club"></div>
+                    <div className="arm-right">
+                        <div className="club"></div>
                     </div>
                 </div>
                 {/* <!-- caveman right --> */}
-                <div class="caveman">
-                    <div class="leg">
-                        <div class="foot">
-                            <div class="fingers"></div>
+                <div className="caveman">
+                    <div className="leg">
+                        <div className="foot">
+                            <div className="fingers"></div>
                         </div>
                     </div>
-                    <div class="leg">
-                        <div class="foot">
-                            <div class="fingers"></div>
+                    <div className="leg">
+                        <div className="foot">
+                            <div className="fingers"></div>
                         </div>
                     </div>
-                    <div class="shape">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
+                    <div className="shape">
+                        <div className="circle"></div>
+                        <div className="circle"></div>
                     </div>
-                    <div class="head">
-                        <div class="eye">
-                            <div class="nose"></div>
+                    <div className="head">
+                        <div className="eye">
+                            <div className="nose"></div>
                         </div>
-                        <div class="mouth"></div>
+                        <div className="mouth"></div>
                     </div>
-                    <div class="arm-right">
-                        <div class="club"></div>
+                    <div className="arm-right">
+                        <div className="club"></div>
                     </div>
                 </div>
             </div>

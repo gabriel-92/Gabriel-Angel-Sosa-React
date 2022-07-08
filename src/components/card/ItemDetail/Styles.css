@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
 .containerModal {
   position: fixed;
   top: 50%;
@@ -63,12 +65,12 @@
 
 .modalDescription {
   position: absolute;
-  top: 150px;
+  top: 0px;
   left: 600px;
   width: 400px;
   height: 400px;
   background-color: #ffffff;
-  overflow-y: scroll hidden;
+
   font-size: 20px;
   z-index: 3;
 
@@ -85,6 +87,16 @@
   font-size: 3rem;
   font-weight: bold;
   color: #ff0000;
+  display: flex;
+}
+
+.quantityTitle {
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
 }
 
 .modal__address {
@@ -97,4 +109,41 @@
   margin: 0px;
   padding: 0px;
   font-size: 1.25rem;
+  overflow-y: scroll;
+  height: 300px;
+
+}
+
+.modalCount {
+  height: auto;
+  width: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: relative;
+  font-size: 20px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+/* alinear al centro*/
+.buttonFinish {
+  margin: auto;
+  width: 90%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+
+  cursor: pointer;
+
 }

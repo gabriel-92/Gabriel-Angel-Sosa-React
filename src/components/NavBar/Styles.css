@@ -50,7 +50,7 @@ nav .inner-nav ul {
 
 nav .inner-nav li {
     list-style: none;
-    cursor: pointer;
+
     line-height: 3;
     padding: 0 25px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -65,6 +65,7 @@ nav .inner-nav li a {
     font-weight: 500;
     border-radius: 50px;
     width: 100%;
+    cursor: pointer;
 }
 
 nav .inner-nav li:hover {
@@ -86,8 +87,3 @@ nav .inner-nav li:hover {
     display: flex;
     justify-content: center;
 }
-
-
-
-/* align-items: center;
-    text-align: center; */
