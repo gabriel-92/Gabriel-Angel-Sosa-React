@@ -1,14 +1,17 @@
-//componentes necesarios
+//Importaciones de Hocks y librerías  necesarios
 import React, { useRef } from "react";
 import { motion, AnimatePresence, useCycle } from "framer-motion";
 import { useDimensions } from "./Use-Dimensions/useDimensions";
-//estilos del componente
+import { Link } from "react-router-dom";
+
+//?estilos del componente
 import "./Styles.css";
+//?iconos del componente
 import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
 import Cart from "../CartWidget/Index";
-import { Link } from "react-router-dom";
 
+//?variantes para la librería framer-motion
 const variants = {
     open: (height = 1000) => ({
         clipPath: `circle(${height * 1.7 + 200}px at 40px 40px)`,
@@ -28,7 +31,7 @@ const variants = {
     },
 };
 
-//Renderización del componente usando las animaciones de la librería
+//?Renderización del componente usando las animaciones de la librería
 
 const SliderBar = () => {
     const [show, setShow] = useCycle(false, true);
@@ -104,7 +107,7 @@ const SliderBar = () => {
                                 whileTap={{ scale: 1 }}
                                 href="#"
                             >
-                                women's clothing
+                                Women's clothing
                             </motion.p>
                         </Link>
                     </motion.li>
@@ -115,18 +118,18 @@ const SliderBar = () => {
                                 whileTap={{ scale: 1 }}
                                 href="#"
                             >
-                                men's clothing
+                                Men's clothing
                             </motion.p>
                         </Link>
                     </motion.li>
                     <motion.li className="category">
-                        <Link to="/category/jewelery">
+                        <Link to="/category/Jewelry">
                             <motion.p
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 1 }}
                                 href="#"
                             >
-                                jewelry
+                                Jewelry
                             </motion.p>
                         </Link>
                     </motion.li>
@@ -137,7 +140,7 @@ const SliderBar = () => {
                                 whileTap={{ scale: 1 }}
                                 href="#"
                             >
-                                electronics
+                                Electronics
                             </motion.p>
                         </Link>
                     </motion.li>

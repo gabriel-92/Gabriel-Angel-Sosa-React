@@ -1,29 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import "./Styles.css";
-import { IoCloseCircleOutline } from "react-icons/io5";
 import ItemCount from "../../ItemCount/index";
+import { Shop } from "../../../Context/ShopContext";
+
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 const ItemDetail = ({ product }) => {
-    product.stock = 10;
-
     const navigate = useNavigate();
 
+    product.stock = 10;
+
     const [qtyAdded, setQtyAdded] = useState(0);
+    const { addItem } = useContext(Shop);
+
     const handleConfirm = (qty) => {
         setQtyAdded(qty);
     };
 
     const handleTerminate = () => {
+        addItem(product, qtyAdded);
+
         navigate("/cart");
     };
 
     const close = () => {
         navigate(`/`);
     };
-    console.log(qtyAdded);
 
     return (
         <motion.div className="containerModal">
@@ -43,7 +48,7 @@ const ItemDetail = ({ product }) => {
                         }}
                     ></motion.img>
                     <span className="modal__price">
-                        Price $ {product.price}
+                        Price: $ {product.price}
                     </span>
                     {!qtyAdded ? (
                         <ItemCount

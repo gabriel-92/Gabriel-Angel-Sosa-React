@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Shop } from "../../Context/ShopContext";
 import "./Styles.css";
 
 const Cart = () => {
+    const { cart } = useContext(Shop);
+
+    console.log(cart.length);
     return (
         <motion.button
             className="Cart"
@@ -14,7 +18,9 @@ const Cart = () => {
             <motion.span className="TextButtonCart"> Shopping Cart</motion.span>
             <AiOutlineShoppingCart />
             <motion.div className="QuantityContainer ">
-                <motion.span className="QuantityCart">2</motion.span>
+                <motion.span className="QuantityCart">
+                    {cart.length}
+                </motion.span>
             </motion.div>
         </motion.button>
     );

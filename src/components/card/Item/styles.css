@@ -31,7 +31,6 @@
 }
 
 .Price {
-
   position: static;
   font-weight: bold;
   color: #6474b2;
@@ -40,8 +39,6 @@
 
 .BottomContainer {
   display: flex;
-
-
   justify-content: space-between;
 }
 
@@ -60,4 +57,10 @@
   text-decoration: none;
   color: #000;
   font-weight: 500;
+
+}
+
+/*hover de category*/
+.CardCategory a:hover {
+  color: #6474b2;
 }

@@ -11,11 +11,6 @@ const ItemListContainer = ({ greeting }) => {
     const [productos, setProductos] = useState([]);
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const params = useParams();
-    // variantes para el componente ItemCount
-    // const stock = 10;
-    // const handleAdd = () => {
-    //     console.log("Se agregaron productos al carrito");
-    // };
 
     // Hooks react para llamar la función
     useEffect(() => {

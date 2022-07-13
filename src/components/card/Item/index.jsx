@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Shop } from "../../../Context/ShopContext";
 
 import { motion } from "framer-motion";
 import "./styles.css";
 
 const Item = ({ products }) => {
     const navigate = useNavigate();
+    products.stock = 10;
+    const [qtyAdded] = useState(1);
 
+    const { addItem } = useContext(Shop);
+
+    //?navega a la pagina de detalles del producto
     const handleDetail = () => {
         navigate(`/detail/${products.id}`);
     };
 
+    //?agrega un item al carrito cuando se hace click en el  "addToCart"
     const handleAddToCart = () => {
-        navigate(`/cart/`);
+        addItem(products, qtyAdded);
+        //! le comente el navigate para que no se vaya a la pagina de carrito para poder seguir comprando, no llego con el tiempo pero quisiera hacer un modal para que avise que se agrego el item al shopping cart o alguna animación para que quede claro la adhesión al cart
+        //! navigate(`/cart/`);
     };
+
     return (
         <motion.div
             className="CardContainer  "
@@ -29,12 +39,9 @@ const Item = ({ products }) => {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <motion.h5 className="categoryName">Category :</motion.h5>
-                    {/* navegua a la categoría del producto */}
+                    {/* // ? navega a la categoría del producto */}
                     <Link to={`/category/${products.category}`}>
-                        <motion.span
-                            whileHover={{ color: "blue" }}
-                            className="category"
-                        >
+                        <motion.span className="category">
                             {products.category}
                         </motion.span>
                     </Link>
@@ -62,7 +69,7 @@ const Item = ({ products }) => {
             </motion.div>
             <motion.div
                 className="BottomContainer"
-                /*para poder separar el evento "onClick" de la función "handleDetail" */
+                /* //?para poder separar el evento "onClick" de la función "handleDetail" */
                 onClick={(e) => e.stopPropagation()}
             >
                 <motion.button
