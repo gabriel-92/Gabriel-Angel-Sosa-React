@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./styles.css";
 import { Shop } from "../../Context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
     const { cart, RemoveAll, removeItem, setCart } = useContext(Shop);
@@ -29,6 +30,31 @@ const Cart = () => {
             setCart([...cart]);
         }
     };
+    const navigate = useNavigate();
+    //?De no tener items en el carrito se muestra un mensaje
+    if (cart.length === 0) {
+        //? 10 segundo después de que se cargue la pagina te redirecciona a home
+        setTimeout(() => {
+            navigate(`/`);
+        }, 10000);
+        return (
+            <>
+                <div className="notItemsContainer">
+                    <div className="titleNotItemsContainer">
+                        <h3 className="titleNotItems">Shopping Cart</h3>
+                    </div>
+                    <h1 className="notItems">
+                        There are no items in the shopping cart, go back to home
+                        and select an item to buy. Thank you very much.
+                    </h1>
+                    <br />
+                    <span className="redirected">
+                        You will be redirected in 10 seconds.
+                    </span>
+                </div>
+            </>
+        );
+    }
 
     return (
         <div className="bodyCart">
@@ -90,8 +116,6 @@ const Cart = () => {
                         </div>
                     </div>
                 ))}
-
-                {/* <div className="Cart-Items pad"> */}
                 <hr />
                 <div className="checkout">
                     <div className="total">
