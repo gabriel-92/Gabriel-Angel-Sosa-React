@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../../fireBase/config";
 
-//import ItemCount from "../../components/ItemCount/index";
 import ItemList from "../../components/card/ItemList/Index";
 import "./Styles.css";
 import Loading from "../../components/Loading/Index";
 
 // función Principal con el export
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
     const [productosFiltrados, setProductosFiltrados] = useState([]);
     const params = useParams();
@@ -17,12 +18,15 @@ const ItemListContainer = ({ greeting }) => {
         //obteniendo datos
         const getProductos = async () => {
             try {
-                const response = await fetch(
-                    "https://fakestoreapi.com/products"
-                );
-                const data = await response.json();
-                setProductos(data);
-                setProductosFiltrados(data);
+                const q = query(collection(db, "products"));
+                const querySnapshot = await getDocs(q);
+                const productos = [];
+                querySnapshot.forEach((doc) => {
+                    productos.push({ id: doc.id, ...doc.data() });
+                });
+
+                setProductos(productos);
+                setProductosFiltrados(productos);
             } catch (error) {
                 console.log("Hubo un error:");
                 console.log(error);
@@ -44,7 +48,6 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <div>
-            {/* <ItemCount stock={stock} handleAdd={handleAdd} /> */}
             {productos.length !== 0 ? (
                 <ItemList products={productosFiltrados} />
             ) : (

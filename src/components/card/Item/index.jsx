@@ -52,9 +52,8 @@ const Item = ({ products }) => {
                         src={products.image}
                         alt={products.title}
                         style={{
-                            width: 150,
-                            height: 150,
-                            borderRadius: "50%",
+                            width: "250px",
+                            height: "200px",
                         }}
                     />
                 </motion.div>
