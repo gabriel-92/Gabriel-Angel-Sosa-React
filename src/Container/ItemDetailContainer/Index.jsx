@@ -17,8 +17,6 @@ const ItemDetailContainer = () => {
                 const docRef = doc(db, "products", params.productId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    console.log(docSnap.id);
-                    console.log("Document data:", docSnap.data());
                     const productDetail = {
                         id: docSnap.id,
                         ...docSnap.data(),

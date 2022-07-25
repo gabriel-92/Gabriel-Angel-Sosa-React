@@ -68,7 +68,7 @@
   top: 0px;
   left: 600px;
   width: 400px;
-  height: 400px;
+  height: auto;
   background-color: #ffffff;
 
   font-size: 20px;
@@ -110,8 +110,16 @@
   padding: 0px;
   font-size: 1.25rem;
   overflow-y: scroll;
-  height: 300px;
+  height: 150px;
+  /*barra de scroll automatica */
 
+
+
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .modalCount {
@@ -120,11 +128,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  position: relative;
+  position: absolute;
   font-size: 20px;
   z-index: 3;
   display: flex;
   justify-content: center;
+  align-items: center;
+  bottom: 0;
+
 }
 
 /* alinear al centro*/
@@ -146,4 +157,16 @@
 
   cursor: pointer;
 
+}
+
+.titleStock {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 10px;
+}
+
+.stock {
+  font-size: 1.2rem;
+  color: #383838;
+  margin: 7px;
 }

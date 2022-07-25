@@ -11,8 +11,6 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 const ItemDetail = ({ product }) => {
     const navigate = useNavigate();
 
-    product.stock = 10;
-
     const [qtyAdded, setQtyAdded] = useState(0);
     const { addItem } = useContext(Shop);
 
@@ -36,20 +34,27 @@ const ItemDetail = ({ product }) => {
                 <IoCloseCircleOutline className="modal__close-icon" />
             </motion.button>
             <motion.div className="modal">
-                <motion.div className="containerModalImagen">
-                    <motion.img
-                        className="modalImage"
-                        alt={product.title}
-                        src={product.image}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "10%",
-                        }}
-                    ></motion.img>
+                <motion.div
+                    className="containerModalImagen"
+                    style={{
+                        backgroundImage: `url(${product.image})`,
+                        backgroundPosition: " center",
+                        backgroundRepeat: "no-repeat",
+                        width: "400px",
+                        height: "400px",
+                        borderRadius: "10px",
+                        backgroundSize: "contain",
+                        position: "relative",
+                    }}
+                ></motion.div>
+                <motion.div className="containerModalInfo">
                     <span className="modal__price">
                         Price: $ {product.price}
                     </span>
+                    <h3 className="titleStock">
+                        Stock :<span className="stock">{product.stock}</span>
+                    </h3>
+
                     {!qtyAdded ? (
                         <ItemCount
                             stock={product.stock}

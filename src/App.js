@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./Container/ItemDetailContainer/Index.jsx";
 import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
 import Cart from ".//Container/Cart/Index";
+import Checkout from "./components/Checkout/Index";
 import "./App.css";
 
 import NotFound from "./components/NotFound/Index";
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/category/:categoryId" element={<ItemListContainer />} />
                     <Route path="/detail/:productId" element={<ItemDetailContainer />} />
                     <Route path="/Cart" element={<Cart />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

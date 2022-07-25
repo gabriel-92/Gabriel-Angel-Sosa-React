@@ -2,6 +2,13 @@ import React, { useContext } from "react";
 import "./styles.css";
 import { Shop } from "../../Context/ShopContext";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import saveOrder from "../../utility/saveOrder";
+import generatedOrder from "../../utility/generatedOrder";
+
+//import Overlay from "../../components/card/Overlay/Index.jsx";
+//import Checkout from "../../components/Checkout/Index";
 
 const Cart = () => {
     const { cart, RemoveAll, removeItem, setCart } = useContext(Shop);
@@ -10,6 +17,11 @@ const Cart = () => {
     const handleRemoveAll = () => {
         RemoveAll();
     };
+    //total de los items del carrito con el precio de cada item multiplicado por la cantidad de items que tiene el carrito
+
+    const total = cart.reduce((total, item) => {
+        return total + item.price * item.cantidad;
+    }, 0);
 
     //? descuenta una Und. de un item del carrito hasta que sea menor a 1 luego lo quita
     const handleRemove = (product) => {
@@ -18,8 +30,29 @@ const Cart = () => {
             item.cantidad -= 1;
             setCart([...cart]);
         } else {
-            removeItem(product);
+            //preguntar si quiere eliminar el producto con sweetalert2 y si lo acepta se elimina
+            Swal.fire({
+                title: "¿Estas por eliminar el producto de la lista de compra?",
+                text: "¡Estas seguro!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminarlo!",
+                cancelButtonText: "No, cancelar!",
+            }).then((result) => {
+                if (result.value) {
+                    removeItem(product);
+                }
+            });
         }
+    };
+
+    //checkout abre el formulario de checkout y se elimina el carrito
+
+    const handleCheckout = async () => {
+        const orden = generatedOrder("Sebas", "Calle falsa 123", cart, total);
+        saveOrder(cart, orden);
     };
 
     // ?agrega una Und. de un item al carrito hasta que llegue a la cantidad maxima del stock del producto cuando se llega a la cantidad maxima no se agrega nada al carrito
@@ -70,7 +103,7 @@ const Cart = () => {
                         <div className="image-box">
                             <img
                                 src={product.image}
-                                alt={product.name}
+                                alt={product.title}
                                 style={{ height: "120px" }}
                             />
                         </div>
@@ -81,7 +114,9 @@ const Cart = () => {
                             <img
                                 src={product.image}
                                 alt={product.title}
-                                style={{ height: "30px" }}
+                                style={{
+                                    height: "30px",
+                                }}
                             />
                         </div>
                         <div className="counter">
@@ -123,19 +158,11 @@ const Cart = () => {
                             <div className="Subtotal">Total :</div>
                             <div className="items">{cart.length} items</div>
                         </div>
-                        <div className="total-amount">
-                            {cart
-                                .reduce(
-                                    (total, product) =>
-                                        total +
-                                        product.price * product.cantidad,
-                                    0
-                                )
-                                .toFixed(2)}{" "}
-                            $
-                        </div>
+                        <div className="total-amount">{total.toFixed(2)} $</div>
                     </div>
-                    <button className="button">Checkout</button>
+                    <button className="button" onClick={handleCheckout}>
+                        Checkout
+                    </button>
                 </div>
             </div>
         </div>

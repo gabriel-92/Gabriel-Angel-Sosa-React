@@ -3,11 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { Shop } from "../../../Context/ShopContext";
 
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 import "./styles.css";
 
 const Item = ({ products }) => {
     const navigate = useNavigate();
-    products.stock = 10;
     const [qtyAdded] = useState(1);
 
     const { addItem } = useContext(Shop);
@@ -17,18 +17,38 @@ const Item = ({ products }) => {
         navigate(`/detail/${products.id}`);
     };
 
-    //?agrega un item al carrito cuando se hace click en el  "addToCart"
+    //?"handleAddToCart" agrega un item al carrito cuando se hace click en el  "addToCart" hasta que llegue al stock máximo del producto
     const handleAddToCart = () => {
-        addItem(products, qtyAdded);
-        //! le comente el navigate para que no se vaya a la pagina de carrito para poder seguir comprando, no llego con el tiempo pero quisiera hacer un modal para que avise que se agrego el item al shopping cart o alguna animación para que quede claro la adhesión al cart
-        //! navigate(`/cart/`);
+        if (products.stock > 0) {
+            addItem(products, qtyAdded);
+            products.stock -= qtyAdded;
+        } else {
+            //?si el stock es 0, se muestra un mensaje de alerta con sweetalert2 con opciones para ir a home o al detalle del producto
+            Swal.fire({
+                title: "¡No hay stock!",
+                text: "El producto seleccionado no tiene stock disponible",
+                icon: "error",
+                confirmButtonText: "Volver a la tienda",
+                cancelButtonText: "Ver detalles",
+                showCancelButton: true,
+                cancelButtonColor: "#d33",
+                confirmButtonColor: "#3085d6",
+                showCloseButton: true,
+                allowOutsideClick: false,
+            }).then((result) => {
+                if (result.value) {
+                    navigate(`/`);
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    navigate(`/detail/${products.id}`);
+                }
+            });
+        }
     };
-
     return (
         <motion.div
             className="CardContainer  "
             whileHover={{
-                scale: 1.1,
+                scale: 1.05,
                 cursor: "pointer",
             }}
             onClick={handleDetail}
@@ -46,17 +66,18 @@ const Item = ({ products }) => {
                         </motion.span>
                     </Link>
                 </motion.div>
-                <motion.div className="imageContainer">
-                    <img
-                        className="cardImg"
-                        src={products.image}
-                        alt={products.title}
-                        style={{
-                            width: "250px",
-                            height: "200px",
-                        }}
-                    />
-                </motion.div>
+                <motion.div
+                    className="imageContainer"
+                    style={{
+                        backgroundImage: `url(${products.image})`,
+                        backgroundPosition: " center",
+                        backgroundRepeat: "no-repeat",
+                        width: "250px",
+                        height: "250px",
+                        borderRadius: "10px",
+                        backgroundSize: "contain",
+                    }}
+                ></motion.div>
                 <motion.div className="titleContainer">
                     <motion.h3 className="Title">{products.title}</motion.h3>
                 </motion.div>

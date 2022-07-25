@@ -7,7 +7,6 @@ import "./Styles.css";
 const Cart = () => {
     const { cart } = useContext(Shop);
 
-    console.log(cart.length);
     return (
         <motion.button
             className="Cart"
