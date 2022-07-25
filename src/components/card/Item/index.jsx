@@ -22,6 +22,7 @@ const Item = ({ products }) => {
         if (products.stock > 0) {
             addItem(products, qtyAdded);
             products.stock -= qtyAdded;
+            Swal.fire(" attached", "Product added successfully", "success");
         } else {
             //?si el stock es 0, se muestra un mensaje de alerta con sweetalert2 con opciones para ir a home o al detalle del producto
             Swal.fire({

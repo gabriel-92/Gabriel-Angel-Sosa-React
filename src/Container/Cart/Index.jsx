@@ -52,8 +52,34 @@ const Cart = () => {
 
     const handleCheckout = async () => {
         const orden = generatedOrder("Sebas", "Calle falsa 123", cart, total);
-        saveOrder(cart, orden);
+        Swal.fire({
+            title: "¿Estas seguro de proceder con la compra?",
+            text: "¡Estas seguro!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, proceder!",
+            cancelButtonText: "No, cancelar!",
+        }).then((result) => {
+            if (result.value) {
+                saveOrder(cart, orden);
+                generatedOrder();
+                RemoveAll();
+                navigate("/");
+            }
+
+            //? si el usuario no acepta se cancela la compra
+            else {
+                Swal.fire("Cancelado", "La compra ha sido cancelada", "error");
+            }
+        });
     };
+
+    //? si el usuario acepta se procede a guardar la compra
+
+    //
+    // saveOrder(cart, orden);
 
     // ?agrega una Und. de un item al carrito hasta que llegue a la cantidad maxima del stock del producto cuando se llega a la cantidad maxima no se agrega nada al carrito
     const handleAdd = (product) => {
