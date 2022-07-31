@@ -6,7 +6,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+
+
 }
+
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vh;
+
+
+
+
+}
+
+.cartContainer-modal {}
 
 .CartContainer {
   width: 70%;
@@ -46,6 +64,7 @@
 
 .Cart-Items {
   margin: auto;
+  margin-top: 50px;
   width: 90%;
   height: 30%;
   display: flex;

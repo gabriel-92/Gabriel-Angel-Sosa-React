@@ -22,15 +22,21 @@ const Item = ({ products }) => {
         if (products.stock > 0) {
             addItem(products, qtyAdded);
             products.stock -= qtyAdded;
-            Swal.fire(" attached", "Product added successfully", "success");
+            Swal.fire({
+                title: "Added to cart",
+                text: "Item added to cart",
+                icon: "success",
+                showConfirmButton: false,
+                width: "fit-content",
+            });
         } else {
             //?si el stock es 0, se muestra un mensaje de alerta con sweetalert2 con opciones para ir a home o al detalle del producto
             Swal.fire({
-                title: "¡No hay stock!",
-                text: "El producto seleccionado no tiene stock disponible",
+                title: "¡no stock!",
+                text: "The selected product does not have stock available",
                 icon: "error",
-                confirmButtonText: "Volver a la tienda",
-                cancelButtonText: "Ver detalles",
+                confirmButtonText: "Return to the store",
+                cancelButtonText: "See details",
                 showCancelButton: true,
                 cancelButtonColor: "#d33",
                 confirmButtonColor: "#3085d6",

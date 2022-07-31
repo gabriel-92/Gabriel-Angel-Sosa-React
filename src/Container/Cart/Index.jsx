@@ -1,23 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./styles.css";
 import { Shop } from "../../Context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
-import saveOrder from "../../utility/saveOrder";
-import generatedOrder from "../../utility/generatedOrder";
-
-//import Overlay from "../../components/card/Overlay/Index.jsx";
-//import Checkout from "../../components/Checkout/Index";
+import Checkout from "../../components/modals/Checkout/Index";
 
 const Cart = () => {
     const { cart, RemoveAll, removeItem, setCart } = useContext(Shop);
+
+    const [openModal, setOpenModal] = useState(false);
 
     //? quita todos los items del carrito
     const handleRemoveAll = () => {
         RemoveAll();
     };
-    //total de los items del carrito con el precio de cada item multiplicado por la cantidad de items que tiene el carrito
+    //?total de los items del carrito con el precio de cada item multiplicado por la cantidad de items que tiene el carrito
 
     const total = cart.reduce((total, item) => {
         return total + item.price * item.cantidad;
@@ -30,16 +27,16 @@ const Cart = () => {
             item.cantidad -= 1;
             setCart([...cart]);
         } else {
-            //preguntar si quiere eliminar el producto con sweetalert2 y si lo acepta se elimina
+            //?preguntar si quiere eliminar el producto con sweetalert2 y si lo acepta se elimina
             Swal.fire({
-                title: "¿Estas por eliminar el producto de la lista de compra?",
-                text: "¡Estas seguro!",
+                title: "¿You are about to remove the product from the shopping list?",
+                text: "¡Are you sure!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Si, eliminarlo!",
-                cancelButtonText: "No, cancelar!",
+                confirmButtonText: "yes, i want to delete it!",
+                cancelButtonText: "No, Cancel!",
             }).then((result) => {
                 if (result.value) {
                     removeItem(product);
@@ -47,39 +44,6 @@ const Cart = () => {
             });
         }
     };
-
-    //checkout abre el formulario de checkout y se elimina el carrito
-
-    const handleCheckout = async () => {
-        const orden = generatedOrder("Sebas", "Calle falsa 123", cart, total);
-        Swal.fire({
-            title: "¿Estas seguro de proceder con la compra?",
-            text: "¡Estas seguro!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, proceder!",
-            cancelButtonText: "No, cancelar!",
-        }).then((result) => {
-            if (result.value) {
-                saveOrder(cart, orden);
-                generatedOrder();
-                RemoveAll();
-                navigate("/");
-            }
-
-            //? si el usuario no acepta se cancela la compra
-            else {
-                Swal.fire("Cancelado", "La compra ha sido cancelada", "error");
-            }
-        });
-    };
-
-    //? si el usuario acepta se procede a guardar la compra
-
-    //
-    // saveOrder(cart, orden);
 
     // ?agrega una Und. de un item al carrito hasta que llegue a la cantidad maxima del stock del producto cuando se llega a la cantidad maxima no se agrega nada al carrito
     const handleAdd = (product) => {
@@ -116,82 +80,96 @@ const Cart = () => {
     }
 
     return (
-        <div className="bodyCart">
-            <div className="CartContainer">
-                <div className="Header">
-                    <h3 className="Heading">Shopping Cart</h3>
-                    <button className="Action" onClick={handleRemoveAll}>
-                        Remove All
-                    </button>
-                </div>
-                {cart.map((product) => (
-                    <div className="Cart-Items" key={product.id}>
-                        <div className="image-box">
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                style={{ height: "120px" }}
-                            />
-                        </div>
-                        <div className="about">
-                            <h3 className="title">{product.title}</h3>
-                            <p className="Unit-Price"> Unit Price</p>{" "}
-                            <h3 className="subtitle">$ {product.price}</h3>
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                style={{
-                                    height: "30px",
-                                }}
-                            />
-                        </div>
-                        <div className="counter">
-                            <button onClick={() => handleRemove(product)}>
-                                -
-                            </button>
-                            <div className="count">{product.cantidad}</div>
-                            <button onClick={() => handleAdd(product)}>
-                                +
-                            </button>
-                        </div>
-                        <div className="prices">
-                            <div className="amount">
-                                <p className="Product__Sub-Total">
-                                    Product Sub-Total :
-                                </p>
-                                <p>
-                                    {(product.price * product.cantidad).toFixed(
-                                        2
-                                    )}{" "}
-                                    $
-                                </p>
+        <>
+            <div className="bodyCart">
+                <div className="CartContainer">
+                    <div className="Header">
+                        <h3 className="Heading">Shopping Cart</h3>
+                        <button className="Action" onClick={handleRemoveAll}>
+                            Remove All
+                        </button>
+                    </div>
+                    {cart.map((product) => (
+                        <div className="Cart-Items" key={product.id}>
+                            <div className="image-box">
+                                <img
+                                    src={product.image}
+                                    alt={product.title}
+                                    style={{ height: "120px" }}
+                                />
                             </div>
-                            <div className="remove">
-                                <button
-                                    className="remove"
-                                    onClick={() => removeItem(product)}
-                                >
-                                    Remove Item
+                            <div className="about">
+                                <h3 className="title">{product.title}</h3>
+                                <p className="Unit-Price"> Unit Price</p>{" "}
+                                <h3 className="subtitle">$ {product.price}</h3>
+                                <img
+                                    src={product.image}
+                                    alt={product.title}
+                                    style={{
+                                        height: "30px",
+                                    }}
+                                />
+                            </div>
+                            <div className="counter">
+                                <button onClick={() => handleRemove(product)}>
+                                    -
+                                </button>
+                                <div className="count">{product.cantidad}</div>
+                                <button onClick={() => handleAdd(product)}>
+                                    +
                                 </button>
                             </div>
+                            <div className="prices">
+                                <div className="amount">
+                                    <p className="Product__Sub-Total">
+                                        Product Sub-Total :
+                                    </p>
+                                    <p>
+                                        {(
+                                            product.price * product.cantidad
+                                        ).toFixed(2)}{" "}
+                                        $
+                                    </p>
+                                </div>
+                                <div className="remove">
+                                    <button
+                                        className="remove"
+                                        onClick={() => removeItem(product)}
+                                    >
+                                        Remove Item
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                ))}
-                <hr />
-                <div className="checkout">
-                    <div className="total">
-                        <div>
-                            <div className="Subtotal">Total :</div>
-                            <div className="items">{cart.length} items</div>
+                    ))}
+                    <hr />
+                    <div className="checkout">
+                        <div className="total">
+                            <div>
+                                <div className="Subtotal">Total :</div>
+                                <div className="items">{cart.length} items</div>
+                            </div>
+                            <div className="total-amount">
+                                {total.toFixed(2)} $
+                            </div>
                         </div>
-                        <div className="total-amount">{total.toFixed(2)} $</div>
+                        <button
+                            className="button"
+                            onClick={() => setOpenModal(true)}
+                        >
+                            Checkout
+                        </button>
+                        <Checkout
+                            open={openModal}
+                            total={total}
+                            cart={cart}
+                            RemoveAll={RemoveAll}
+                            onClose={() => setOpenModal(false)}
+                        />
                     </div>
-                    <button className="button" onClick={handleCheckout}>
-                        Checkout
-                    </button>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

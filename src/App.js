@@ -5,19 +5,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./Container/ItemDetailContainer/Index.jsx";
 import ItemListContainer from "./Container/ItemListContainer/Index.jsx";
 import Cart from ".//Container/Cart/Index";
-import Checkout from "./components/Checkout/Index";
+import Checkout from "./components/modals/Checkout/Index";
 import "./App.css";
 
 import NotFound from "./components/NotFound/Index";
 import ShopProvider from ".//Context/ShopContext";
 
 
+
 //Renderizar componentes
 function App() {
 
     return (
-        <ShopProvider>
-            <BrowserRouter>
+        <ShopProvider >
+            <BrowserRouter >
                 <SliderBar />
                 <Routes>
                     <Route path="/" element={<ItemListContainer />} />
