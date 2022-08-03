@@ -17,14 +17,14 @@ const Cart = () => {
     //?total de los items del carrito con el precio de cada item multiplicado por la cantidad de items que tiene el carrito
 
     const total = cart.reduce((total, item) => {
-        return total + item.price * item.cantidad;
+        return total + item.price * item.quantity;
     }, 0);
 
     //? descuenta una Und. de un item del carrito hasta que sea menor a 1 luego lo quita
     const handleRemove = (product) => {
         const item = cart.find((item) => item.id === product.id);
-        if (item.cantidad > 1) {
-            item.cantidad -= 1;
+        if (item.quantity > 1) {
+            item.quantity -= 1;
             setCart([...cart]);
         } else {
             //?preguntar si quiere eliminar el producto con sweetalert2 y si lo acepta se elimina
@@ -48,8 +48,8 @@ const Cart = () => {
     // ?agrega una Und. de un item al carrito hasta que llegue a la cantidad maxima del stock del producto cuando se llega a la cantidad maxima no se agrega nada al carrito
     const handleAdd = (product) => {
         const item = cart.find((item) => item.id === product.id);
-        if (item.cantidad < product.stock) {
-            item.cantidad += 1;
+        if (item.quantity < product.stock) {
+            item.quantity += 1;
             setCart([...cart]);
         }
     };
@@ -114,7 +114,7 @@ const Cart = () => {
                                 <button onClick={() => handleRemove(product)}>
                                     -
                                 </button>
-                                <div className="count">{product.cantidad}</div>
+                                <div className="count">{product.quantity}</div>
                                 <button onClick={() => handleAdd(product)}>
                                     +
                                 </button>
@@ -126,7 +126,7 @@ const Cart = () => {
                                     </p>
                                     <p>
                                         {(
-                                            product.price * product.cantidad
+                                            product.price * product.quantity
                                         ).toFixed(2)}{" "}
                                         $
                                     </p>

@@ -13,8 +13,6 @@ const generatedOrder = (firstName, lastName, email, phone, address, message, car
 
         cart: cart,
         total: total,
-        // .toFixed(2),
-
         createdAt: new Date().toLocaleString(),
 
     }

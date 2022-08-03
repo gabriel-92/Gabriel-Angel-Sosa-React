@@ -1,3 +1,5 @@
+/* usar las images de product */
+
 .CardContainer {
   border: 10px solid #fff;
   border-radius: 10px;
@@ -19,7 +21,12 @@
   background-color: #fff;
   border: 10px solid #fff;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  background-size: contain;
 
 }
 
@@ -72,4 +79,23 @@
 /*hover de category*/
 .CardCategory a:hover {
   color: #6474b2;
+}
+
+
+.OutOfStock {
+  position: relative;
+
+  top: -100px;
+  right: -70px;
+  background-color: #ff0000;
+  color: #fff;
+  padding: 0.5em;
+  border-radius: 80%;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  transform: rotate(30deg);
+
 }

@@ -32,21 +32,16 @@ const Checkout = ({ open, onClose, total, cart, RemoveAll }) => {
             cancelButtonText: "No, cancelar!",
         }).then((result) => {
             if (result.value) {
-                //? si el usuario acepta se guarda el pedido en la base de datos 1 vez
+                //? si el usuario acepta se guarda el pedido en la base de datos
                 saveOrder(cart, order);
                 RemoveAll();
                 cambiarFormularioEnviado(true);
-
-                //saveOrder(cart, order);
-                // RemoveAll();
-                //navigate("/");
             } else {
                 Swal.fire("Cancelado", "La compra ha sido cancelada", "error");
             }
         });
     };
 
-    //un console log que me diga cuantas veces
     if (!open) return null;
 
     return (
@@ -66,8 +61,9 @@ const Checkout = ({ open, onClose, total, cart, RemoveAll }) => {
                         address: "",
                         message: "",
                     }}
-                    //? validaciones del formulari usando validate.jsx para reducir el código en este componente
+                    //? validaciones del formulario usando validate.jsx para reducir el código en este componente
                     validate={validate}
+                    //? onSubmit es el callback que se ejecuta cuando el formulario es enviado y se valida correctamente
                     onSubmit={(values, { resetForm }) => {
                         handleSubmit(values);
                         resetForm();

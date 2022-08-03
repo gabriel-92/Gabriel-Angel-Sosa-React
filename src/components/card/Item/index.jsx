@@ -58,13 +58,10 @@ const Item = ({ products }) => {
                 scale: 1.05,
                 cursor: "pointer",
             }}
-            onClick={handleDetail}
+            onClick={(e) => e.stopPropagation()}
         >
             <motion.div className="Card">
-                <motion.div
-                    className="CardCategory"
-                    onClick={(e) => e.stopPropagation()}
-                >
+                <motion.div className="CardCategory" onClick={handleDetail}>
                     <motion.h5 className="categoryName">Category :</motion.h5>
                     {/* // ? navega a la categoría del producto */}
                     <Link to={`/category/${products.category}`}>
@@ -77,14 +74,15 @@ const Item = ({ products }) => {
                     className="imageContainer"
                     style={{
                         backgroundImage: `url(${products.image})`,
-                        backgroundPosition: " center",
-                        backgroundRepeat: "no-repeat",
-                        width: "250px",
-                        height: "250px",
-                        borderRadius: "10px",
-                        backgroundSize: "contain",
                     }}
-                ></motion.div>
+                >
+                    {/* // solo se muestra si el stock es 0 */}
+                    {products.stock === 0 && (
+                        <motion.div className="OutOfStock">
+                            <motion.h5>Sold out</motion.h5>
+                        </motion.div>
+                    )}
+                </motion.div>
                 <motion.div className="titleContainer">
                     <motion.h3 className="Title">{products.title}</motion.h3>
                 </motion.div>

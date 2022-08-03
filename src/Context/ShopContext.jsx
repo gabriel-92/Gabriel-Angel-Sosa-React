@@ -6,12 +6,12 @@ const ShopProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
     //?Agregar un item al carrito, acorde a la cantidad que no se pase del stock del producto
-    const addItem = (producto, cantidad) => {
+    const addItem = (producto, quantity) => {
         const item = cart.find((item) => item.id === producto.id);
         if (item) {
-            item.cantidad += cantidad;
+            item.quantity += quantity;
         } else {
-            setCart([...cart, { ...producto, cantidad }]);
+            setCart([...cart, { ...producto, quantity }]);
         }
     };
 
