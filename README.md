@@ -1,6 +1,4 @@
-# Título del Proyecto
-
-_Proyecto Final Ultima Entrega_
+# _Proyecto Final Ultima Entrega_
 
 ## Comenzando 🚀
 
