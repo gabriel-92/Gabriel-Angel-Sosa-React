@@ -29,16 +29,14 @@ $ npm start
 ```
 
 ---
-```
+
+---
+
+![home page(40)](https://user-images.githubusercontent.com/97252275/183267239-a6bce998-596d-470b-a8bc-7a8c5a2f69da.png)
 
 
-![home page(40)]
-(https://user-images.githubusercontent.com/97252275/183267239-a6bce998-596d-470b-a8bc-7a8c5a2f69da.png)
+---
 
-
-
-
-```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
