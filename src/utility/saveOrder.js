@@ -32,9 +32,6 @@ const saveOrder = (cart, order) => {
             })
     })
 
-
-    // console.log("wqdqwd", outOfStock.length[0] === 0);
-
     if (outOfStock.length === 0) {
         //   console.log("que llega en add", outOfStock);
         //Si no hay productos fuera de stock, agregar la orden al array de ordenes y guardarla en la db

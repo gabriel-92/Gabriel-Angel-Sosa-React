@@ -5,11 +5,11 @@ import { Shop } from "../../../Context/ShopContext";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import "./styles.css";
-import ItemDetail from "../ItemDetail/Index";
+import ItemDetail from "../../modals/ItemDetail/Index";
 
 const Item = ({ products }) => {
-    const navigate = useNavigate();
     const [openModal, setOpenModal] = useState(false);
+    const navigate = useNavigate();
 
     const [qtyAdded] = useState(1);
 
@@ -44,7 +44,7 @@ const Item = ({ products }) => {
                 if (result.value) {
                     navigate(`/`);
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    navigate(`/detail/${products.id}`);
+                    setOpenModal(true);
                 }
             });
         }
@@ -52,10 +52,6 @@ const Item = ({ products }) => {
     return (
         <motion.div
             className="CardContainer  "
-            // whileHover={{
-            //     scale: 1.05,
-            //     cursor: "pointer",
-            // }}
             onClick={(e) => e.stopPropagation()}
         >
             <motion.div className="Card">
@@ -74,7 +70,7 @@ const Item = ({ products }) => {
                         backgroundImage: `url(${products.image})`,
                     }}
                 >
-                    {/* // solo se muestra si el stock es 0 */}
+                    {/* //? solo se muestra si el stock es 0 */}
                     {products.stock === 0 && (
                         <motion.div className="OutOfStock">
                             <motion.h5>Sold out</motion.h5>
@@ -107,13 +103,13 @@ const Item = ({ products }) => {
                     className="button"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => setOpenModal(true, products.id)}
+                    onClick={() => setOpenModal(true)}
                 >
                     Detail
                 </motion.button>
                 <ItemDetail
                     open={openModal ? true : false}
-                    onClose={() => setOpenModal(false, products.id)}
+                    onClose={() => setOpenModal(false)}
                     product={products}
                 />
             </motion.div>
