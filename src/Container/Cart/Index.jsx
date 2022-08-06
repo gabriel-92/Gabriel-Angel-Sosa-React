@@ -7,18 +7,49 @@ import Checkout from "../../components/modals/Checkout/Index";
 
 const Cart = () => {
     const { cart, RemoveAll, removeItem, setCart } = useContext(Shop);
-
+    const navigate = useNavigate();
     const [openModal, setOpenModal] = useState(false);
 
     //? quita todos los items del carrito
     const handleRemoveAll = () => {
-        RemoveAll();
+        Swal.fire({
+            title: "are you sure",
+            text: "you want to remove all items?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                RemoveAll();
+                Swal.fire("All items have been removed!", "success");
+            }
+        });
     };
     //?total de los items del carrito con el precio de cada item multiplicado por la cantidad de items que tiene el carrito
 
     const total = cart.reduce((total, item) => {
         return total + item.price * item.quantity;
     }, 0);
+
+    const questionDelete = (product) => {
+        Swal.fire({
+            title: "¿You are about to remove the product from the shopping list?",
+            text: "¡Are you sure!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "yes, i want to delete it!",
+            cancelButtonText: "No, Cancel!",
+        }).then((result) => {
+            if (result.value) {
+                removeItem(product);
+                Swal.fire("The product has been removed!", "success");
+            }
+        });
+    };
 
     //? descuenta una Und. de un item del carrito hasta que sea menor a 1 luego lo quita
     const handleRemove = (product) => {
@@ -28,20 +59,7 @@ const Cart = () => {
             setCart([...cart]);
         } else {
             //?preguntar si quiere eliminar el producto con sweetalert2 y si lo acepta se elimina
-            Swal.fire({
-                title: "¿You are about to remove the product from the shopping list?",
-                text: "¡Are you sure!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "yes, i want to delete it!",
-                cancelButtonText: "No, Cancel!",
-            }).then((result) => {
-                if (result.value) {
-                    removeItem(product);
-                }
-            });
+            questionDelete(product);
         }
     };
 
@@ -53,13 +71,13 @@ const Cart = () => {
             setCart([...cart]);
         }
     };
-    const navigate = useNavigate();
+
     //?De no tener items en el carrito se muestra un mensaje
     if (cart.length === 0) {
         //? 10 segundo después de que se cargue la pagina te redirecciona a home
         setTimeout(() => {
             navigate(`/`);
-        }, 10000);
+        }, 50000); //
         return (
             <>
                 <div className="notItemsContainer">
@@ -134,7 +152,7 @@ const Cart = () => {
                                 <div className="remove">
                                     <button
                                         className="remove"
-                                        onClick={() => removeItem(product)}
+                                        onClick={() => questionDelete(product)}
                                     >
                                         Remove Item
                                     </button>

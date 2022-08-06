@@ -5,17 +5,15 @@ import { Shop } from "../../../Context/ShopContext";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import "./styles.css";
+import ItemDetail from "../ItemDetail/Index";
 
 const Item = ({ products }) => {
     const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false);
+
     const [qtyAdded] = useState(1);
 
     const { addItem } = useContext(Shop);
-
-    //?navega a la pagina de detalles del producto
-    const handleDetail = () => {
-        navigate(`/detail/${products.id}`);
-    };
 
     //?"handleAddToCart" agrega un item al carrito cuando se hace click en el  "addToCart" hasta que llegue al stock máximo del producto
     const handleAddToCart = () => {
@@ -54,14 +52,14 @@ const Item = ({ products }) => {
     return (
         <motion.div
             className="CardContainer  "
-            whileHover={{
-                scale: 1.05,
-                cursor: "pointer",
-            }}
+            // whileHover={{
+            //     scale: 1.05,
+            //     cursor: "pointer",
+            // }}
             onClick={(e) => e.stopPropagation()}
         >
             <motion.div className="Card">
-                <motion.div className="CardCategory" onClick={handleDetail}>
+                <motion.div className="CardCategory">
                     <motion.h5 className="categoryName">Category :</motion.h5>
                     {/* // ? navega a la categoría del producto */}
                     <Link to={`/category/${products.category}`}>
@@ -109,10 +107,15 @@ const Item = ({ products }) => {
                     className="button"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={handleDetail}
+                    onClick={() => setOpenModal(true, products.id)}
                 >
                     Detail
                 </motion.button>
+                <ItemDetail
+                    open={openModal ? true : false}
+                    onClose={() => setOpenModal(false, products.id)}
+                    product={products}
+                />
             </motion.div>
         </motion.div>
     );

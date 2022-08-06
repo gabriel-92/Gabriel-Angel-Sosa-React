@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-//componentes
-import ItemDetail from "../../components/card/ItemDetail/Index";
+
+import ItemDetail from "../../components/cardItems/ItemDetail/Index";
 import Loading from "../../components/Loading/Index";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../fireBase/config";

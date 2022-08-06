@@ -26,15 +26,17 @@ const saveOrder = (cart, order) => {
                     batch.update(doc(db, "products", producto.id), {
                         stock: producto.stock - productoEnCart.quantity,
                     });
-                } else {
+                } else { // preguntar si el producto esta fuera de stock y agregarlo al array de productos fuera de stock
                     outOfStock.push(producto);
                 }
             })
     })
 
 
-    //Si hay productos fuera de stock, mostrar un mensaje de error y cerrar el batch
-    if (outOfStock?.length === 0) {
+    // console.log("wqdqwd", outOfStock.length[0] === 0);
+
+    if (outOfStock.length === 0) {
+        //   console.log("que llega en add", outOfStock);
         //Si no hay productos fuera de stock, agregar la orden al array de ordenes y guardarla en la db
         addDoc(collection(db, "orders"), order)
             .then(({ id }) => {
@@ -42,86 +44,36 @@ const saveOrder = (cart, order) => {
                 batch.commit().then(() => {
                     Swal.fire({
                         title: "Orden guardada",
-                        text: "La orden se ha guardado correctamente" + id,
+                        text: "la orden " + id + " se guardo correctamente",
                         icon: "success",
                         confirmButtonText: "Cerrar",
                         confirmButtonColor: "#f44336",
                         showConfirmButton: true,
                     });
-                }
-                    , (error) => {
-                        Swal.fire({
-                            title: "Error",
-                            text: "No se pudo guardar la orden" + error,
-                            icon: "error",
-                            confirmButtonText: "Cerrar",
-                        });
-                    }
-                );
+                }); // si no se captura el error, se muestra un mensaje de error
             }
-            )
+            ).catch((error) => {
+                Swal.fire({
+                    title: "Error",
+                    text: "No se pudo guardar la orden" + error,
+                    icon: "error",
+                    confirmButtonText: "Cerrar",
+                    confirmButtonColor: "#f44336",
+                    showConfirmButton: true,
+                });
+            }
+            );
+    } else {
+        Swal.fire({
+            title: "Error",
+            text: "No hay stock suficiente para los productos seleccionados",
+            icon: "error",
+            confirmButtonText: "Cerrar",
+            confirmButtonColor: "#f44336",
+            showConfirmButton: true,
+        });
     }
 }
 
+
 export default saveOrder;
-
-//     //Si el array auxiliar de productos fuera de stock esta vació, entonces generar la orden y guardarla en la db
-//     if (outOfStock?.length === 0) {
-//         (addDoc(collection(db, "orders"), order).then(({ id }) => {
-//             batch.commit().then(() => {
-//                 Swal.fire({
-//                     title: "Orden guardada",
-//                     text: "La orden se ha guardado correctamente" + id,
-//                     icon: "success",
-//                     confirmButtonText: "Ok",
-//                 });
-//             }).catch(() => {
-//                 Swal.fire({
-//                     title: "Error",
-//                     text: "Error al guardar la orden",
-//                     icon: "error",
-//                     confirmButtonText: "Ok",
-//                 });
-//             });
-//         })
-//         );
-//     }
-// }
-
-
-//             // ).catch(() => {
-//             //     Swal.fire({
-//             //         title: "Error",
-//             //         text: "Error al guardar la orden",
-//             //         icon: "error",
-//             //         confirmButtonText: "Ok",
-//             //     });
-//             // }
-//         );
-//     }
-// }
-
-//         }
-//         );
-//     }
-//     else (outOfStock.length === 0) {
-//         addDoc(collection(db, "orders"), orden).then(({ id }) => {
-//             batch.commit().then(() => {
-//                 Swal.fire({
-//                     title: "Orden realizada",
-//                     text: "La orden se ha realizado correctamente" + id,
-//                     icon: "success",
-//                     confirmButtonText: "Ok",
-//                 });
-//             }
-//             );
-//         }
-//         );
-//     } console.log(outOfStock)
-// }
-
-
-//si hay producto fuera de stock,preguntar si quiere continuar con la orden si no, no generar la orden y mostrar un mensaje de error y si si, generar la orden pero sin el producto fuera de stock y mostrar un mensaje de error que avise que se quito el producto fuera de stock y que se genero la orden 
-
-
-

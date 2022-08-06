@@ -9,7 +9,7 @@ import "./Styles.css";
 //?iconos del componente
 import { AiOutlineMenu } from "react-icons/ai";
 import { CgClose } from "react-icons/cg";
-import Cart from "../CartWidget/Index";
+import Cart from "../cartWidget/Index";
 
 //?variantes para la librería framer-motion
 const variants = {
