@@ -57,20 +57,11 @@ $ npm start
 -   [sweetalert2](https://sweetalert2.github.io/) -A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES
 
 
-### Analice las pruebas end-to-end 🔩
+### Analice las pruebas end-to-end 🔩⌨️
 
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
 
 ```
-Da un ejemplo
+Come in and see my code you will like it...
 ```
 
 ## Authors ✒️
