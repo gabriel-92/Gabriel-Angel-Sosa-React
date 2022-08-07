@@ -34,7 +34,8 @@ $ npm start
 
 
 ---
-
+![01-51-52](https://user-images.githubusercontent.com/97252275/183269688-7664d6d8-70b1-4e26-940d-a8be33264369.gif)
+---
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
