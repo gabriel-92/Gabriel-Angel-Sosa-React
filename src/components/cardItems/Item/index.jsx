@@ -1,11 +1,13 @@
+//?Importaciones de librerías necesarias
 import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Shop } from "../../../Context/ShopContext";
-
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
-import "./styles.css";
+//?Importaciones de componentes necesarios
+import { Shop } from "../../../Context/ShopContext";
 import ItemDetail from "../../modals/ItemDetail/Index";
+//?Importaciones de estilos necesarios
+import "./styles.css";
 
 const Item = ({ products }) => {
     const [openModal, setOpenModal] = useState(false);

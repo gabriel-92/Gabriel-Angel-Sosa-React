@@ -1,11 +1,13 @@
+//?Importaciones de librerías necesarias
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../fireBase/config";
-
-import ItemList from "../../components/cardItems/ItemList/Index";
-import "./Styles.css";
+//?Importaciones de componentes necesarios
 import Loading from "../../components/Loading/Index";
+import ItemList from "../../components/cardItems/ItemList/Index";
+//?Importaciones de estilos necesarios
+import "./Styles.css";
 
 // función Principal con el export
 const ItemListContainer = () => {

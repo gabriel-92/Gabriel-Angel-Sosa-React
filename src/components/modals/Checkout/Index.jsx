@@ -40,7 +40,10 @@ const Checkout = ({ open, onClose, total, cart, RemoveAll }) => {
             if (result.value) {
                 //? si el usuario acepta se guarda el pedido en la base de datos
                 saveOrder(cart, order);
-                RemoveAll();
+                setTimeout(() => {
+                    RemoveAll();
+                }, 3000);
+
                 cambiarFormularioEnviado(true);
             } else {
                 Swal.fire("Cancelled", "Your order has not been sent", "error");

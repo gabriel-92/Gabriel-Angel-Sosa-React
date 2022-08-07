@@ -1,8 +1,9 @@
-//Importaciones de Hocks y librerías  necesarios
+//?Importaciones de Hocks y librerías  necesarios
 import React, { useRef } from "react";
 import { motion, AnimatePresence, useCycle } from "framer-motion";
 import { useDimensions } from "./Use-Dimensions/useDimensions";
 import { Link } from "react-router-dom";
+//?Importaciones de componentes necesarios
 
 //?estilos del componente
 import "./Styles.css";
@@ -30,6 +31,22 @@ const variants = {
         },
     },
 };
+const variantsUl = {
+    open: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            y: { stiffness: 1000, velocity: -100 },
+        },
+    },
+    closed: {
+        y: 50,
+        opacity: 0,
+        transition: {
+            y: { stiffness: 1000 },
+        },
+    },
+};
 
 //?Renderización del componente usando las animaciones de la librería
 
@@ -53,7 +70,7 @@ const SliderBar = () => {
                 >
                     <motion.div className="inner-nav">
                         <motion.ul>
-                            <motion.li>
+                            <motion.li variants={variantsUl}>
                                 <Link to="/">
                                     <motion.p
                                         whileHover={{ scale: 1.1 }}
@@ -63,7 +80,7 @@ const SliderBar = () => {
                                     </motion.p>
                                 </Link>
                             </motion.li>
-                            <motion.li>
+                            <motion.li variants={variantsUl}>
                                 <motion.a
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 1 }}
@@ -72,7 +89,7 @@ const SliderBar = () => {
                                     About
                                 </motion.a>
                             </motion.li>
-                            <motion.li>
+                            <motion.li variants={variantsUl}>
                                 <motion.a
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 1 }}
@@ -81,7 +98,7 @@ const SliderBar = () => {
                                     Contact
                                 </motion.a>
                             </motion.li>
-                            <motion.li>
+                            <motion.li variants={variantsUl}>
                                 <Link to="/cart">
                                     <Cart />
                                 </Link>

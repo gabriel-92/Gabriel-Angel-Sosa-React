@@ -1,3 +1,4 @@
+//?Importaciones de librerías necesarias
 import {
     addDoc,
     collection,
@@ -7,6 +8,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../fireBase/config.js";
 import Swal from "sweetalert2";
+
+
 const saveOrder = (cart, order) => {
     //Primer paso: abrir un batch
     const batch = writeBatch(db);
@@ -31,30 +34,29 @@ const saveOrder = (cart, order) => {
                 }
             })
     })
-
+    //? la saque  afuera del forEach para que no se ejecute varias veces
     if (outOfStock.length === 0) {
-        //   console.log("que llega en add", outOfStock);
         //Si no hay productos fuera de stock, agregar la orden al array de ordenes y guardarla en la db
         addDoc(collection(db, "orders"), order)
             .then(({ id }) => {
                 //Ejecutar el batch
                 batch.commit().then(() => {
                     Swal.fire({
-                        title: "Orden guardada",
-                        text: "la orden " + id + " se guardo correctamente",
+                        title: "Order saved",
+                        text: "The order with the ID :  " + id + " was generated successfully",
                         icon: "success",
-                        confirmButtonText: "Cerrar",
+                        confirmButtonText: "Close",
                         confirmButtonColor: "#f44336",
                         showConfirmButton: true,
                     });
-                }); // si no se captura el error, se muestra un mensaje de error
+                });
             }
             ).catch((error) => {
                 Swal.fire({
                     title: "Error",
-                    text: "No se pudo guardar la orden" + error,
+                    text: " The order cannot be generated" + error,
                     icon: "error",
-                    confirmButtonText: "Cerrar",
+                    confirmButtonText: "Close",
                     confirmButtonColor: "#f44336",
                     showConfirmButton: true,
                 });
@@ -63,14 +65,13 @@ const saveOrder = (cart, order) => {
     } else {
         Swal.fire({
             title: "Error",
-            text: "No hay stock suficiente para los productos seleccionados",
+            text: "The order cannot be generated because the product " + outOfStock[0].title + " is out of stock",
             icon: "error",
-            confirmButtonText: "Cerrar",
+            confirmButtonText: "Close",
             confirmButtonColor: "#f44336",
             showConfirmButton: true,
         });
     }
 }
-
 
 export default saveOrder;

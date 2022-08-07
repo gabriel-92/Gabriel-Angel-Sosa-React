@@ -1,4 +1,4 @@
-
+//? contructor for the order object
 
 const generatedOrder = (firstName, lastName, email, phone, address, message, cart, total) => {
     return {

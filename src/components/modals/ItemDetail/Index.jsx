@@ -17,7 +17,7 @@ const ItemDetail = ({ product, open, onClose }) => {
     const [qtyAdded, setQtyAdded] = useState(0);
     const { addItem } = useContext(Shop);
 
-    //handleConfirm //no funciona si se supera el stock del producto
+    //?handleConfirm no funciona si se supera el stock del producto
     const handleConfirm = (qty) => {
         product.stock > 0
             ? setQtyAdded(qty)
@@ -122,7 +122,6 @@ const ItemDetail = ({ product, open, onClose }) => {
                                         {product.stock}
                                     </span>
                                 </h3>
-
                                 {!qtyAdded ? (
                                     <ItemCount
                                         stock={product.stock}

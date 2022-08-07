@@ -1,7 +1,10 @@
+//? importaciones de librerías  necesarias para el componente
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+//?Importaciones de componentes necesarios
 import { Shop } from "../../Context/ShopContext";
+//?Importaciones de estilos necesarios
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./Styles.css";
 
 const Cart = () => {

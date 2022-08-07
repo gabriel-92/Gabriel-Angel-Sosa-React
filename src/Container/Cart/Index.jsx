@@ -1,9 +1,12 @@
+//?Importaciones de librerías necesarias
 import React, { useContext, useState } from "react";
-import "./styles.css";
-import { Shop } from "../../Context/ShopContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+//?Importaciones de componentes necesarios
 import Checkout from "../../components/modals/Checkout/Index";
+import { Shop } from "../../Context/ShopContext";
+//?Importaciones de estilos necesarios
+import "./styles.css";
 
 const Cart = () => {
     const { cart, RemoveAll, removeItem, setCart } = useContext(Shop);
@@ -74,10 +77,10 @@ const Cart = () => {
 
     //?De no tener items en el carrito se muestra un mensaje
     if (cart.length === 0) {
-        //? 10 segundo después de que se cargue la pagina te redirecciona a home
+        //? 5 segundos después de que se cargue la pagina te redirecciona a home
         setTimeout(() => {
             navigate(`/`);
-        }, 50000); //
+        }, 5000); //
         return (
             <>
                 <div className="notItemsContainer">
@@ -90,7 +93,7 @@ const Cart = () => {
                     </h1>
                     <br />
                     <span className="redirected">
-                        You will be redirected in 10 seconds.
+                        You will be redirected in 5 seconds.
                     </span>
                 </div>
             </>

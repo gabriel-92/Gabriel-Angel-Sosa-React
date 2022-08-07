@@ -1,9 +1,10 @@
+//?Importaciones de librerías necesarias
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import Loading from "../../components/Loading/Index";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../fireBase/config";
+//?Importaciones de componentes necesarios
+import Loading from "../../components/Loading/Index";
 import ItemDetail from "../../components/modals/ItemDetail/Index";
 
 const ItemDetailContainer = () => {
