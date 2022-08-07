@@ -28,10 +28,13 @@ $ npm start
 
 ---
 
-*Final delivery
-*Format: Link to a git repository where the objectives are met + GIF/Video showing the navigability and basic flows of the application and those that the student cnsiders important to highlight.
-*Objective of the challenge: The student must meet all the specifications of the challenge
-*Conditions: The challenge must be delivered complete. Everything required in the challenge document is required (it is not possible to omit any of the basic functionalities). What is not required or extra challenges will not be considered
+###Final delivery
+
+-Format: Link to a git repository where the objectives are met + GIF/Video showing the navigability and basic flows of the application and those that the student cnsiders important to highlight.
+
+-Objective of the challenge: The student must meet all the specifications of the challenge
+
+-Conditions: The challenge must be delivered complete. Everything required in the challenge document is required (it is not possible to omit any of the basic functionalities). What is not required or extra challenges will not be considered
 
 
 ---
@@ -44,7 +47,14 @@ $ npm start
 ---
 
 
+## built with 🛠️
 
+
+-   [React](https://reactjs.org/docs/getting-started.html) - A JavaScript library for building user interfaces
+-   [Framer Motion](https://www.framer.com/docs/) - Production-ready declarative animations.
+-   [Formik docs](https://formik.org/docs/overview) - Formik is the world's most popular open source form library for React and React Native
+-   [Firebase](https://firebase.google.com/docs) - Firebase is an app development platform that helps you build and grow apps
+-   [sweetalert2](https://sweetalert2.github.io/) -A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES
 
 
 ### Analice las pruebas end-to-end 🔩
