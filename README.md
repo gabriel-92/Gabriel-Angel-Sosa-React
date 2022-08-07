@@ -1,4 +1,4 @@
-# _Proyecto Final Ultima Entrega-Gabriel Angel Sosa _
+# Proyecto Final Ultima Entrega-Gabriel Angel Sosa 
 
 ## Starting 🚀
 
@@ -30,11 +30,19 @@ $ npm start
 
 ### Final delivery
 
--Format: Link to a git repository where the objectives are met + GIF/Video showing the navigability and basic flows of the application and those that the student cnsiders important to highlight.
+-   Format: Link to a git repository where the objectives are met + GIF/Video showing the navigability and basic flows of the application and those that the student    cnsiders important to highlight.
 
--Objective of the challenge: The student must meet all the specifications of the challenge
+-   Objective of the challenge: The student must meet all the specifications of the challenge
 
--Conditions: The challenge must be delivered complete. Everything required in the challenge document is required (it is not possible to omit any of the basic functionalities). What is not required or extra challenges will not be considered
+-   Conditions: The challenge must be delivered complete. Everything required in the challenge document is required (it is not possible to omit any of the basic functionalities). What is not required or extra challenges will not be considered
+
+-   ### Components:
+-   #### nav bar
+-   #### Catalogue
+-   #### product detail
+-   #### CartContext
+-   #### CartWidget
+-   #### purchase form
 
 
 ---
@@ -66,4 +74,4 @@ Come in and see my code you will like it...
 
 ## Authors ✒️
 
-_ Gabriel Angel Sosa_
+-  [Gabriel Angel Sosa](https://github.com/gabriel-92)
