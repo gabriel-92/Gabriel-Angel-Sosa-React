@@ -66,10 +66,9 @@ $ npm start
 -   [Firebase](https://firebase.google.com/docs) - Firebase is an app development platform that helps you build and grow apps
 -   [sweetalert2](https://sweetalert2.github.io/) -A BEAUTIFUL, RESPONSIVE, CUSTOMIZABLE, ACCESSIBLE (WAI-ARIA) REPLACEMENT FOR JAVASCRIPT'S POPUP BOXES
 
-### Analice las pruebas end-to-end 🔩⌨️
-
+ 
 ```
-Come in and see my code you will like it...
+ Come in and see my code you will like it...🔩⌨️ 🤩
 ```
 
 ## Authors ✒️
