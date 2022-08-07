@@ -28,20 +28,26 @@ $ npm start
 
 ---
 
+```
+*Final delivery
+*Format: Link to a git repository where the objectives are met + GIF/Video showing the navigability and basic flows of the application and those that the student cnsiders important to highlight.
+*Objective of the challenge: The student must meet all the specifications of the challenge
+*Conditions: The challenge must be delivered complete. Everything required in the challenge document is required (it is not possible to omit any of the basic functionalities). What is not required or extra challenges will not be considered
+
+```
+
 ---
 
 ![home page(40)](https://user-images.githubusercontent.com/97252275/183267239-a6bce998-596d-470b-a8bc-7a8c5a2f69da.png)
 
-
+## Running the tests ⚙️
 ---
 ![01-51-52](https://user-images.githubusercontent.com/97252275/183269688-7664d6d8-70b1-4e26-940d-a8be33264369.gif)
 ---
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+
 
 ### Analice las pruebas end-to-end 🔩
 
